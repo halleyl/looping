@@ -17,12 +17,14 @@
     }
     
     /*  Animate the H1 for fun  */
+    /*  It acts a little weird the first time you load the page - maybe because of the prompt?  */
     @keyframes whee-anim {
-      from {text-indent: 0;}
+      from {text-indent: -20%;}
       to {text-indent: 100%;}
     }
     
     h1 {
+      text-indent: -20%;
       font-size: 3rem;
       animation-name: whee-anim;
       animation-duration: 2s;
@@ -32,11 +34,17 @@
     .red {
       color: red;
     }
+    
+    p {
+      text-align: center;
+    }
+    
   </style>
 </head>
 <body>
   <h1>Whee!</h1>
-
+  <p id="par1"></p>
+  <p id="par2"></p>
   <img id="roller" src="" alt="roller coaster">
 
   <script>
@@ -83,11 +91,22 @@
     howMany = parseInt(howMany)
     var counter = 1;
 
-    // Execute loop twice as many times as the user requested
-    howMany = howMany * 2
+    // Execute loop HALF as many times as the user requested
+    howMany = howMany / 2
+    
+    // Added modulo to check whether half their original value ends up as a non-integer
+    // Explain that we're rounding up to a number in 2nd paragraph
+    if (howMany % 1 != 0) {
+      document.querySelector("#par2").innerHTML = ("We threw in half a ride for free, though!")
+    }
+    // If they enter an odd number, round the halved value up to an integer
+    howMany = Math.ceil(howMany)
+    
+    // Explain to the user in first paragraph why they only get half the rides
+    document.querySelector("#par1").innerHTML = ("Sorry, we can only ride " + howMany + " times.")
     
     // TODO: execute this loop the number of times user requested
-    // Done! - LH (with user requested amount doubled, per Extra Challenge)
+    // Done! - LH (with user requested amount halved, per Extra Challenge)
     while(howMany > 0){
       console.log("Wheee! This is the ", counter, " time we've done this!");
       howMany = howMany - 1
