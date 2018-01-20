@@ -92,19 +92,24 @@
     howMany = parseInt(howMany)
     var counter = 1;
 
-    // Execute loop HALF as many times as the user requested
-    howMany = howMany / 2
-    
-    // Added modulo to check whether half their original value ends up as a non-integer
-    // Explain that we're rounding up to a number in 2nd paragraph
-    if (howMany % 1 != 0) {
-      document.querySelector("#par2").innerHTML = ("We threw in half a ride for free, though!")
+    if(howMany != 1) {
+      // Execute loop HALF as many times as the user requested
+      howMany = howMany / 2
+
+      // Added modulo to check whether half their original value ends up as a non-integer
+      // Explain that we're rounding up to a number in 2nd paragraph
+      if (howMany % 1 != 0) {
+        document.querySelector("#par2").innerHTML = ("We threw in half a ride for free, though!")
+      }
+      // If they enter an odd number, round the halved value up to an integer
+      howMany = Math.ceil(howMany)
+
+      // Explain to the user in first paragraph why they only get half the rides
+      document.querySelector("#par1").innerHTML = ("Sorry, we can only give you half the rides you asked for. So we'll ride " + howMany + " times.")
     }
-    // If they enter an odd number, round the halved value up to an integer
-    howMany = Math.ceil(howMany)
-    
-    // Explain to the user in first paragraph why they only get half the rides
-    document.querySelector("#par1").innerHTML = ("Sorry, we can only ride " + howMany + " times.")
+    else {
+      document.querySelector("#par1").innerHTML = ("Okay, here you go!")
+    }
     
     // TODO: execute this loop the number of times user requested
     // Done! - LH (with user requested amount halved, per Extra Challenge)
