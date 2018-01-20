@@ -46,7 +46,7 @@
   <h1>Whee!</h1>
   <p id="par1"></p>
   <p id="par2"></p>
-  <img id="roller" src="" alt="roller coaster">
+  <img id="roller" src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="roller coaster">
 
   <script>
     
@@ -92,6 +92,7 @@
     howMany = parseInt(howMany)
     var counter = 1;
 
+    // If the number is anything more than 1
     if(howMany != 1) {
       // Execute loop HALF as many times as the user requested
       howMany = howMany / 2
@@ -107,6 +108,7 @@
       // Explain to the user in first paragraph why they only get half the rides
       document.querySelector("#par1").innerHTML = ("Sorry, we can only give you half the rides you asked for. So we'll ride " + howMany + " times.")
     }
+    // If user enters 1, just tell them that they get 1 ride to make things simpler (since half of 1 rounded up is still 1)
     else {
       document.querySelector("#par1").innerHTML = ("Okay, here you go!")
     }
