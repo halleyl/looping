@@ -19,17 +19,17 @@
     /*  Animate the H1 for fun  */
     /*  It acts a little weird the first time you load the page - maybe because of the prompt?  */
     @keyframes whee-anim {
-      from {text-indent: -20%;}
+      from {text-indent: 0;}
       to {text-indent: 100%;}
     }
     
     h1 {
-      text-indent: -20%;
+      text-align: center;
       font-size: 3rem;
       animation-name: whee-anim;
       animation-delay: 1s;
       animation-duration: 2s;
-      animation-timing-function: ease;
+      animation-timing-function: cubic-bezier(0,-5,0,1);
     }
     
     .red {
@@ -92,8 +92,18 @@
     howMany = parseInt(howMany)
     var counter = 1;
 
-    // If the number is anything more than 1
-    if(howMany != 1) {
+    // Check to see if value entered is a number
+    if (isNaN(howMany) == true) {
+      document.querySelector("#par1").innerHTML = ("Hey, that's not a number!")
+    }
+    
+    // Check to see if the value entered is less than 1
+    else if(howMany < 1) {
+      document.querySelector("#par1").innerHTML = ("Sorry, you have to enter a number that's 1 or greater.")
+    }
+    
+    // Otherwise, do the loop!
+    else if(howMany != 1) {
       // Execute loop HALF as many times as the user requested
       howMany = howMany / 2
 
@@ -108,6 +118,7 @@
       // Explain to the user in first paragraph why they only get half the rides
       document.querySelector("#par1").innerHTML = ("Sorry, we can only give you half the rides you asked for. So we'll ride " + howMany + " times.")
     }
+    
     // If user enters 1, just tell them that they get 1 ride to make things simpler (since half of 1 rounded up is still 1)
     else {
       document.querySelector("#par1").innerHTML = ("Okay, here you go!")
